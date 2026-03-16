@@ -1,0 +1,158 @@
+@use "variables" as *;
+
+
+#solutions {
+  background-color: $slate-50;
+}
+
+
+.solutions-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.solutions-title {
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: $slate-900;
+  margin-bottom: 1rem;
+}
+
+.solutions-subtitle {
+  color: $slate-500;
+  font-size: 1.125rem;
+}
+
+/* ================= GRID ================= */
+
+.solutions-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+
+  @media (min-width: $sm) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ================= CARD ================= */
+
+.solution-card {
+  position: relative;
+  border-radius: 1.5rem;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  background-size: cover;
+  background-position: center;
+  height: 380px;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: transform 0.8s ease, opacity 0.8s ease;
+
+  .solution-card-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to top,
+      rgba(0,0,0,0.7) 0%,
+      rgba(0,0,0,0.2) 100%
+    );
+    z-index: 1;
+  }
+
+  .solution-card-content {
+    position: relative;
+    z-index: 2;
+    padding: 2rem;
+    width: 100%;
+
+    .solution-card-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 0.75rem;
+    }
+
+    .solution-card-extra-content {
+      opacity: 0;
+      max-height: 0;
+      transition: max-height 3.6s ease, opacity 1.6s ease;
+
+      .solution-card-desc {
+        color: rgba(255,255,255,0.85);
+        font-size: 0.9375rem;
+        line-height: 1.6;
+        margin-bottom: 1.5rem;
+      }
+
+      .solution-learn-more {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.65rem 1.2rem;
+        background-color: $primary;
+        color: $slate-900;
+        border-radius: 0.55rem;
+        font-weight: 700;
+        font-size: 0.875rem;
+        text-decoration: none;
+        border: 1px solid transparent;
+        transition: transform 0.25s cubic-bezier(.25,.8,.25,1), background-color 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+
+        &:hover {
+          background-color: #ffffff;
+          transform: translateY(-2px);
+          box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+          border-color: rgba(255,255,255,0.65);
+        }
+
+        &:focus-visible {
+          outline: none;
+          box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.35);
+        }
+      }
+    }
+  }
+
+  &.visible {
+    opacity: 1;
+    transform: translateY(0);
+
+      .solution-card-extra-content {
+        opacity: 1;
+        max-height: 500px; 
+      }
+  }
+
+  @media (min-width: $md) {
+    height: 420px;
+  }
+
+  @media (min-width: $lg) {
+    height: 450px;
+
+    .solution-card-overlay {
+      display: none;
+    }
+
+    &.visible {
+      .solution-card-extra-content {
+        opacity: 0;
+        max-height: 0;
+      }
+
+      &:hover {
+        .solution-card-overlay{
+          display: block;
+        }
+
+        .solution-card-extra-content {
+          opacity: 1;
+          max-height: 500px; 
+        }
+      }
+    }
+  }
+}

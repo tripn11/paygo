@@ -1,0 +1,82 @@
+@use "variables" as *;
+
+.ceo-quote {
+  padding: 8rem 0;
+  background-color: $bg-dark;
+  color: #ffffff;
+}
+
+.ceo-quote-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 4rem;
+  align-items: center;
+
+  @media (min-width: $lg) {
+    grid-template-columns: 1fr 1.5fr;
+  }
+}
+
+.ceo-image-wrapper {
+  position: relative;
+  border-radius: 2rem;
+  overflow: hidden;
+  aspect-ratio: 1;
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border: 8px solid rgba($primary, 0.2);
+    border-radius: 2rem;
+    pointer-events: none;
+  }
+}
+
+.ceo-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.ceo-text-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.ceo-quote-icon {
+  color: $primary;
+  opacity: 0.5;
+}
+
+.ceo-quote-text {
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.4;
+  font-style: italic;
+  margin: 0;
+
+  @media (min-width: $md) {
+    font-size: 2.5rem;
+  }
+}
+
+.ceo-author {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.ceo-name {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: $primary;
+  margin: 0;
+}
+
+.ceo-title {
+  font-size: 0.875rem;
+  color: $slate-400;
+  margin: 0;
+}
