@@ -8,22 +8,22 @@ export default function Solutions() {
   {
     title: 'Commercial Solar',
     desc: 'Reliable solar power systems designed to reduce energy costs and keep businesses running without interruptions.',
-    image: 'images/commercial-solution.jpg'
+    image: 'media/commercial-solution.jpg'
   },
   {
     title: 'Residential Solar',
     desc: 'Flexible pay-as-you-go solar solutions that give homes and communities access to clean, dependable electricity.',
-    image: 'images/residential-solution.jpeg'
+    image: 'media/residential-solution.jpeg'
   },
   {
     title: 'Maintenance',
     desc: 'Continuous monitoring and expert servicing to ensure your solar system performs efficiently for years.',
-    image: 'images/maintenance.jpeg'
+    image: 'media/maintenance.jpeg'
   },
   {
     title: 'Electric Mobility',
     desc: 'Clean transportation powered by renewable energy, supporting the shift to sustainable mobility.',
-    image: 'images/electric-vehicle.jpg'
+    image: 'media/electric-vehicle.jpg'
   }
 ];
 

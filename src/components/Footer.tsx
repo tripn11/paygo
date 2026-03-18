@@ -1,7 +1,9 @@
 "use client";
 
 import Link from 'next/link';
-import { Sun, Facebook, Twitter, Instagram, Linkedin, Mail } from 'lucide-react';
+import Image from 'next/image';
+import { Mail } from 'lucide-react';
+import { FaFacebook, FaInstagram, FaLinkedin } from "react-icons/fa";
 
 export default function Footer() {
   return (
@@ -10,17 +12,16 @@ export default function Footer() {
         <div className="footer-grid">
           <div className="footer-brand">
             <div className="footer-logo">
-              <Sun size={28} className="logo-icon" />
-              <h2 className="logo-text">Paygo</h2>
+              <Image src='/media/logo.png' alt='Paygo Logo' width={80} height={100} />
+              <h2 className="logo-text">Enerplaz Paygo</h2>
             </div>
             <p className="footer-description">
               Democratizing energy access through innovative technology and sustainable infrastructure.
             </p>
             <div className="footer-socials">
-              <a href="#" className="footer-social-link" aria-label="Facebook"><Facebook size={20} /></a>
-              <a href="#" className="footer-social-link" aria-label="Twitter"><Twitter size={20} /></a>
-              <a href="#" className="footer-social-link" aria-label="Instagram"><Instagram size={20} /></a>
-              <a href="#" className="footer-social-link" aria-label="LinkedIn"><Linkedin size={20} /></a>
+              <a href="https://www.facebook.com/enerplazpaygo/" className="footer-social-link" aria-label="Facebook"><FaFacebook size={24} /></a>
+              <a href="https://www.instagram.com/paygoenerplaz/" className="footer-social-link" aria-label="Instagram"><FaInstagram size={24} /></a>
+              <a href="https://www.linkedin.com/company/enerplaz-paygo/?originalSubdomain=ng" className="footer-social-link" aria-label="LinkedIn"><FaLinkedin size={25}/></a>
             </div>
           </div>
 
@@ -30,7 +31,6 @@ export default function Footer() {
             <ul className="footer-list">
               <li><Link href="/about" className="footer-link">About Us</Link></li>
               <li><Link href="#" className="footer-link">Our Projects</Link></li>
-              <li><Link href="#" className="footer-link">Careers</Link></li>
               <li><Link href="/contact" className="footer-link">Contact</Link></li>
             </ul>
           </div>
@@ -41,7 +41,6 @@ export default function Footer() {
               <li><Link href="#" className="footer-link">Help Center</Link></li>
               <li><Link href="#" className="footer-link">Terms of Service</Link></li>
               <li><Link href="#" className="footer-link">Privacy Policy</Link></li>
-              <li><Link href="#" className="footer-link">Cookie Policy</Link></li>
             </ul>
           </div>
 

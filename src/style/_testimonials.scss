@@ -1,51 +1,83 @@
 @use "variables" as *;
-@use "base" as *;
 
 .testimonials {
-  padding: 6rem 0;
-  background-color: $slate-50;
+  padding: 4rem 0;
+  background: $slate-50;
   overflow: hidden;
 }
 
 .testimonials-header {
   text-align: center;
-  margin-bottom: 4rem;
+  margin-bottom: 3rem;
 }
 
-.testimonials-title {
-  font-size: 2.5rem;
-  font-weight: 900;
-  color: $slate-900;
-  margin-bottom: 1rem;
+.testimonials-carousel {
+  overflow-x: scroll;
+  overflow-y: hidden;
+  cursor: grab;
+  position: relative;
+  width: 100%;
+  user-select: none;
+  touch-action: pan-y;
+
+  /* Hide scrollbar across browsers */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* ✅ Snap to each card */
+  scroll-snap-type: x mandatory;
+
+  &.dragging {
+    cursor: grabbing;
+    /* Disable snap while dragging so it doesn't fight the user */
+    scroll-snap-type: none;
+  }
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 100px;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  &::before {
+    left: 0;
+    background: linear-gradient(to right, $slate-50, transparent);
+  }
+
+  &::after {
+    right: 0;
+    background: linear-gradient(to left, $slate-50, transparent);
+  }
 }
 
-.testimonials-subtitle {
-  color: $slate-500;
-  font-size: 1.125rem;
-}
-
-.testimonials-scroll-container {
-  overflow-x: auto;
-  padding-bottom: 2rem;
-  @extend .no-scrollbar;
-}
-
-.testimonials-grid {
+.testimonials-track {
   display: flex;
   gap: 2rem;
   width: max-content;
+  padding: 1rem 0;
 }
 
 .testimonial-card {
-  background-color: #ffffff;
-  padding: 2.5rem;
-  border-radius: 1.5rem;
-  border: 1px solid $slate-100;
+  flex-shrink: 0;
   width: 22rem;
+  background: #fff;
+  border-radius: 1rem;
+  padding: 2rem;
+  border: 1px solid $slate-100;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  gap: 1rem;
+
+  /* ✅ Each card snaps into place */
+  scroll-snap-align: start;
 }
 
 .testimonial-stars {
@@ -54,41 +86,29 @@
 }
 
 .testimonial-text {
-  color: $slate-800;
-  font-size: 1rem;
-  line-height: 1.6;
   font-style: italic;
-  margin: 0;
+  color: $slate-700;
 }
 
 .testimonial-user {
   display: flex;
+  gap: 0.75rem;
   align-items: center;
-  gap: 1rem;
-  margin-top: auto;
-}
 
-.testimonial-avatar {
-  width: 3rem;
-  height: 3rem;
-  border-radius: 9999px;
-  object-fit: cover;
-}
+  img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+  }
 
-.testimonial-user-info {
-  display: flex;
-  flex-direction: column;
-}
+  h4 {
+    font-size: 0.9rem;
+    margin: 0;
+  }
 
-.testimonial-name {
-  font-size: 1rem;
-  font-weight: 700;
-  color: $slate-900;
-  margin: 0;
-}
-
-.testimonial-role {
-  font-size: 0.75rem;
-  color: $slate-500;
-  margin: 0;
+  p {
+    font-size: 0.75rem;
+    color: $slate-500;
+    margin: 0;
+  }
 }

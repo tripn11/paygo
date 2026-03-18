@@ -1,51 +1,114 @@
 @use "variables" as *;
 
 .partners {
-  padding: 4rem 0;
+  padding: 3rem 0;
   background-color: #ffffff;
-  border-top: 1px solid $slate-100;
+  width: 100%;
+  overflow: hidden;
 }
 
 .partners-label {
-  font-size: 0.75rem;
+  font-size: 0.9rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.2em;
-  color: $slate-400;
-  margin-bottom: 3rem;
+  letter-spacing: 0.15em;
+  color: #64748b;
+  margin-bottom: 2rem;
   text-align: center;
+  padding: 0 1rem;
 }
 
-.partners-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 3rem;
+.partners-carousel {
+  overflow: hidden; 
+  cursor: grab;
+  position: relative;
+  width: 100%;
+  user-select: none;
+  touch-action: pan-y;
 
-  @media (min-width: $md) {
-    gap: 6rem;
+  &.dragging {
+    cursor: grabbing;
   }
+
+  // Edge Fading Gradients
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 60px; // Smaller fade for mobile
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  &::before {
+    left: 0;
+    background: linear-gradient(to right, #ffffff, transparent);
+  }
+
+  &::after {
+    right: 0;
+    background: linear-gradient(to left, #ffffff, transparent);
+  }
+}
+
+.partners-track {
+  display: flex;
+  align-items: center;
+  gap: 3.5rem; // Tight gap for mobile
+  width: max-content;
+  padding: 1rem 0;
 }
 
 .partner-item {
+  flex-shrink: 0;
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  color: $slate-400;
-  transition: color 0.3s ease;
+  justify-content: center;
   filter: grayscale(1);
+  opacity: 0.6;
+  transition: all 0.4s ease;
+}
 
-  &:hover {
-    color: $slate-900;
-    filter: grayscale(0);
+.partner-logo {
+  height: 40px; // Smaller logos for mobile
+  width: auto;
+  pointer-events: none;
+}
+
+// --- Tablet & Desktop Enhancements ---
+@media (min-width: 768px) {
+  .partners {
+    padding: 4rem 0;
   }
-}
 
-.partner-icon {
-  color: inherit;
-}
+  .partners-label {
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    margin-bottom: 3rem;
+  }
 
-.partner-name {
-  font-size: 1rem;
-  font-weight: 700;
+  .partners-carousel {
+    &::before,
+    &::after {
+      width: 150px; // Deeper fade for larger screens
+    }
+  }
+
+  .partners-track {
+    gap: 8rem; // Wider gap for desktop
+  }
+
+  .partner-item {
+    &:hover {
+      filter: grayscale(0);
+      opacity: 1;
+      transform: scale(1.05);
+    }
+  }
+
+  .partner-logo {
+    height: 100px; // Larger logos for desktop
+  }
 }

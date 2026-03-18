@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Space_Grotesk } from "next/font/google"
 import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 import "@/style/globals.scss";
 
 
@@ -31,6 +32,7 @@ export default function RootLayout({
       <body className={spaceGrotesk.className}>
         <Header />
         {children}
+        <Footer />
       </body>
     </html>
   );
