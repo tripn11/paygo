@@ -1,0 +1,235 @@
+@use "variables" as *;
+
+.about-projects-section {
+  padding: 5rem 0; // smaller on mobile
+  background-color: $slate-900;
+  color: #ffffff;
+
+  @media (min-width: $md) {
+    padding: 10rem 0;
+  }
+
+  .section-header {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 4rem;
+
+    @media (min-width: $md) {
+      margin-bottom: 6rem;
+    }
+
+    h2 {
+      font-size: clamp(2rem, 6vw, 3.5rem); // fluid: 2rem on small, up to 3.5rem
+      font-weight: 700; // was 900 — less heavy, more readable
+      margin-bottom: 1.5rem;
+      color: #ffffff;
+      line-height: 1.15;
+    }
+
+    p {
+      font-size: clamp(1rem, 3vw, 1.25rem); // fluid body text
+      color: $slate-400;
+    }
+  }
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: 1fr; // mobile: single column
+  gap: 1.5rem; // tighter on mobile
+
+  @media (min-width: $md) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+
+  @media (min-width: $lg) {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
+  }
+}
+
+.project-card {
+  position: relative;
+  border-radius: 1.25rem; // slightly tighter on mobile
+
+  @media (min-width: $md) {
+    border-radius: 2rem;
+  }
+
+  overflow: hidden;
+  height: 380px; // shorter on mobile to prevent clipping
+
+  @media (min-width: $md) {
+    height: 440px;
+  }
+
+  @media (min-width: $lg) {
+    height: 500px;
+  }
+}
+
+.project-image-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+
+  .object-cover {
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+
+  .project-tag {
+    position: absolute;
+    top: 1.25rem;
+    left: 1.25rem;
+
+    @media (min-width: $md) {
+      top: 2rem;
+      left: 2rem;
+    }
+
+    background-color: $primary;
+    color: $slate-900;
+    padding: 0.4rem 0.85rem;
+    border-radius: 0.5rem;
+    font-size: 0.7rem;
+    font-weight: 700; // was 800
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    z-index: 5;
+  }
+}
+
+.project-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.9) 0%,
+    rgba(0, 0, 0, 0.2) 60%,
+    transparent 100%
+  );
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 1.75rem 1.5rem; // tighter on mobile
+
+  @media (min-width: $md) {
+    padding: 3rem 2rem;
+  }
+
+  opacity: 0.9;
+  transition: all 0.5s ease;
+
+  .project-details {
+    transform: translateY(10px); // less dramatic on mobile
+    transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+
+    @media (min-width: $md) {
+      transform: translateY(20px);
+    }
+  }
+
+  .project-loc {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: $primary;
+    font-size: 0.8rem;
+    font-weight: 600; // was 700
+    margin-bottom: 0.75rem;
+
+    @media (min-width: $md) {
+      margin-bottom: 1rem;
+    }
+  }
+
+  h3 {
+    font-size: clamp(1.2rem, 4vw, 1.75rem); // fluid, won't overflow on small screens
+    font-weight: 700; // was 900
+    margin-bottom: 0.75rem;
+    color: #ffffff;
+    line-height: 1.3;
+
+    @media (min-width: $md) {
+      margin-bottom: 1rem;
+    }
+  }
+
+  p {
+    color: $slate-300;
+    font-size: 0.9rem;
+
+    @media (min-width: $md) {
+      font-size: 1rem;
+    }
+
+    line-height: 1.6;
+    margin-bottom: 1.25rem;
+
+    @media (min-width: $md) {
+      margin-bottom: 2rem;
+    }
+
+    // visible by default on mobile (no hover on touch)
+    opacity: 1;
+
+    @media (hover: hover) {
+      opacity: 0;
+      transition: all 0.5s ease;
+    }
+  }
+
+  .project-link {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: transparent;
+    border: none;
+    color: #ffffff;
+    font-weight: 700; // was 800
+    font-size: 0.875rem;
+    cursor: pointer;
+    padding: 0;
+
+    // visible by default on mobile
+    opacity: 1;
+
+    @media (hover: hover) {
+      opacity: 0;
+      transition: all 0.5s ease;
+    }
+
+    &:hover {
+      color: $primary;
+    }
+  }
+}
+
+// Hover effects only on devices that support it (not touch)
+@media (hover: hover) {
+  .project-card:hover {
+    .project-overlay {
+      background: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0.95) 0%,
+        rgba(0, 0, 0, 0.4) 100%
+      );
+
+      .project-details {
+        transform: translateY(0);
+      }
+
+      p,
+      .project-link {
+        opacity: 1;
+      }
+    }
+
+    .object-cover {
+      transform: scale(1.1);
+      transition: transform 10s linear;
+    }
+  }
+}

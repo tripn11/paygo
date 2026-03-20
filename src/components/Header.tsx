@@ -29,7 +29,7 @@ const Header = () => {
           </nav>
 
           <div className="user-actions">
-            <Link href="/login" className="user-icon" aria-label="Login">
+            <Link href="/#" className="user-icon" aria-label="Login">
               <User size={20} />
             </Link>
             <button className="get-started"><span>Get Started</span></button>

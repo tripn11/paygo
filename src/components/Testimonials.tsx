@@ -156,7 +156,7 @@ export default function Testimonials() {
     <section className="testimonials">
       <div className="container">
         <div className="testimonials-header">
-          <h2 className="testimonials-title">Stories of Light</h2>
+          <h2 className="testimonials-title">Testimonials</h2>
           <p className="testimonials-subtitle">
             Hear from the people we empower.
           </p>

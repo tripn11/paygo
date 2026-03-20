@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Space_Grotesk } from "next/font/google"
+import { Space_Grotesk, JetBrains_Mono } from "next/font/google";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import "@/style/globals.scss";
@@ -14,6 +14,13 @@ export const metadata: Metadata = {
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-main", // expose as CSS variable
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500", "700"],
+  variable: "--font-mono", // expose as CSS variable
 });
 
 export default function RootLayout({
@@ -29,7 +36,7 @@ export default function RootLayout({
         <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png"/>
         <link rel="manifest" href="site.webmanifest"/>
       </head>
-      <body className={spaceGrotesk.className}>
+      <body className={`${spaceGrotesk.variable} ${jetbrainsMono.variable}`}>
         <Header />
         {children}
         <Footer />

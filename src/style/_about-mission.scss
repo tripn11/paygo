@@ -1,0 +1,71 @@
+@use "variables" as *;
+
+.about-mission-section {
+  padding: 5rem 0;
+  background-color: #ffffff;
+}
+
+.about-mission-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+
+  @media (min-width: $md) {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
+  }
+}
+
+.about-mission-card {
+  background-color: $slate-50;
+  padding: 2.5rem 2rem;
+  border-radius: 1.5rem;
+  transition: background-color 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+              border-color 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  border: 1px solid transparent;
+
+  @media (min-width: $md) {
+    padding: 4rem 3rem;
+    border-radius: 2rem;
+  }
+
+  &:hover {
+    background-color: #ffffff;
+    border-color: $slate-200;
+    box-shadow: 0 40px 80px -15px rgba(0, 0, 0, 0.1);
+  }
+
+  .card-icon {
+    width: 4rem;
+    height: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 1.25rem;
+    margin-bottom: 2rem;
+
+    @media (min-width: $md) {
+      width: 5rem;
+      height: 5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    &.yellow { background-color: $primary; color: $slate-900; }
+    &.blue   { background-color: $slate-900; color: #ffffff; }
+    &.green  { background-color: #10b981; color: #ffffff; }
+  }
+
+  h3 {
+    font-size: clamp(1.35rem, 3vw, 1.75rem);
+    font-weight: 700;
+    margin-bottom: 1.25rem;
+    letter-spacing: -0.02em;
+  }
+
+  p {
+    color: $slate-600;
+    line-height: 1.7;
+    font-size: clamp(0.95rem, 2vw, 1.125rem);
+  }
+}
