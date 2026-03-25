@@ -8,22 +8,26 @@ export default function Solutions() {
   {
     title: 'Commercial Solar',
     desc: 'Reliable solar power systems designed to reduce energy costs and keep businesses running without interruptions.',
-    image: 'media/commercial-solution.jpg'
+    image: 'media/commercial-solution.jpg',
+    link: 'https://wa.me/09121111163'
   },
   {
     title: 'Residential Solar',
     desc: 'Flexible pay-as-you-go solar solutions that give homes and communities access to clean, dependable electricity.',
-    image: 'media/residential-solution.jpeg'
+    image: 'media/residential-solution.jpeg',
+    link: 'https://wa.me/09121111163'
   },
   {
     title: 'Maintenance',
     desc: 'Continuous monitoring and expert servicing to ensure your solar system performs efficiently for years.',
-    image: 'media/maintenance.jpeg'
+    image: 'media/maintenance.jpeg',
+    link: 'https://wa.me/09121111163'
   },
   {
     title: 'Electric Mobility',
     desc: 'Clean transportation powered by renewable energy, supporting the shift to sustainable mobility.',
-    image: 'media/electric-vehicle.jpg'
+    image: 'media/electric-vehicle.jpg',
+    link: 'https://enerplazevs.com'
   }
 ];
 
@@ -81,7 +85,7 @@ export default function Solutions() {
 
                   <a
                     className="solution-learn-more"
-                    href="https://wa.me/09121111163"
+                    href={item.link}
                     target="_blank"
                     rel="noopener noreferrer"
                   >

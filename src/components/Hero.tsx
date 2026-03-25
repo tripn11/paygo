@@ -2,12 +2,13 @@
 
 import { motion } from 'motion/react';
 import { ArrowRight } from 'lucide-react';
+import Link from 'next/link';
 
 export default function Hero() {
   return (
     <section className="hero">
       <div className="hero-background">
-        <video autoPlay loop muted className="bg-video">
+        <video autoPlay loop muted playsInline className="bg-video">
           <source src="/media/hero-video.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
@@ -30,9 +31,10 @@ export default function Hero() {
             Affordable, reliable, and clean energy solutions tailored for community markets and low-income households. Join the revolution today.
           </p>
           
-          <button className="btn-primary">
-            Get Started <ArrowRight size={20} />
-          </button>
+          <Link href="/contact" className="btn-primary">
+            Get Started
+            <ArrowRight size={20} />
+          </Link>
         </motion.div>
       </div>
     </section>

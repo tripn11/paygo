@@ -32,7 +32,7 @@ const Header = () => {
             <Link href="/#" className="user-icon" aria-label="Login">
               <User size={20} />
             </Link>
-            <button className="get-started"><span>Get Started</span></button>
+            <Link href="/contact" className="get-started"><span>Get Started</span></Link>
             <button
               className="menu-toggle"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
